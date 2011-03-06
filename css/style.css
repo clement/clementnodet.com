@@ -16,25 +16,30 @@ body {
 
 a, a:visited {
   color: inherit;
+  opacity: 0.9;
+  border-bottom: 1px dotted white;
   text-decoration: none;
-  border-bottom: 1px dotted #eeeeee;
-  font-size: 1.2em; }
+  font-size: 1.2em;
+  transition: opacity 0.2s;
+  -webkit-transition: opacity 0.2s;
+  -moz-transition: opacity 0.2s; }
 
 a:hover {
+  opacity: 1;
   border-style: solid; }
 
 .cell {
   width: 640px;
   margin: 0 auto; }
 
-#location {
-  float: right;
-  text-align: right;
-  font-size: 24px;
-  margin-top: 20px; }
+#subtitle {
+  margin: 10px auto;
+  background-color: #59b0c4; }
+  #subtitle .cell {
+    text-align: right;
+    color: white; }
 
 #header {
-  border-bottom: 3px solid #59b0c4;
   padding-top: 20px;
   background-color: #eeeeee; }
   #header .cell {
@@ -53,16 +58,17 @@ a:hover {
   color: #eeeeee;
   font-size: 58px; }
   #content ul, #content p {
-    padding: 20px 0; }
+    padding: 30px 0; }
   #content ul {
     list-style: none; }
     #content ul li {
-      padding-top: 15px; }
+      line-height: 1.2; }
 
 #footer {
   background-color: #59b0c4;
-  border-top: 1px solid #666666;
-  padding: 20px 0px;
+  background-image: url("../img/bg_shadow.png");
+  background-repeat: repeat-x;
+  padding: 25px 0px 20px;
   font-family: sans-serif;
   font-size: 0.8em; }
   #footer a, #footer a:visited {
