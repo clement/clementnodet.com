@@ -10,72 +10,63 @@
   margin: 0; }
 
 body {
-  font-family: 'Josefin Sans Std Light', arial, serif;
-  background-color: #59b0c4;
-  color: #333333; }
+  font-family: 'Lato', arial, sans-serif;
+  font-weight: 300;
+  font-size: 22px;
+  background: url('../img/bg.png') repeat-y #ffffff;
+  color: #444444; }
 
 a, a:visited {
-  color: inherit;
-  opacity: 0.9;
-  border-bottom: 1px dotted white;
+  color: #4e99c8;
   text-decoration: none;
-  font-size: 1.2em;
-  transition: opacity 0.2s;
-  -webkit-transition: opacity 0.2s;
-  -moz-transition: opacity 0.2s; }
+  transition: color 0.2s;
+  -webkit-transition: color 0.2s;
+  -moz-transition: color 0.2s; }
 
 a:hover {
-  opacity: 1;
+  color: #3964aa;
   border-style: solid; }
 
-.cell {
-  width: 640px;
-  margin: 0 auto; }
+.left {
+  width: 280px;
+  float: left; }
 
-#subtitle {
-  margin: 10px auto;
-  background-color: #59b0c4; }
-  #subtitle .cell {
-    text-align: right;
-    color: white; }
+.left img {
+  margin-top: 108px;
+  margin-left: 220px; }
 
-#header {
-  padding-top: 20px;
-  background-color: #eeeeee; }
-  #header .cell {
-    text-align: center; }
-  #header h1 {
-    display: inline;
-    font-size: 128px;
-    padding-left: 10px; }
-  #header img {
-    border-right: 1px dotted #999999;
-    padding: 0 25px;
-    margin-bottom: -5px; }
+.tweet {
+  margin-left: 80px;
+  margin-top: 12px;
+  padding-right: 20px;
 
-#content {
-  background-color: #64c4db;
-  color: #eeeeee;
-  font-size: 58px; }
-  #content ul, #content p {
-    padding: 30px 0; }
-  #content ul {
-    list-style: none; }
-    #content ul li {
-      line-height: 1.2; }
+  text-align: right;
+  font-size: 14px;
+  line-height: 18px;
+  font-style: italic;
+  color: #888888; }
 
-#footer {
-  background-color: #59b0c4;
-  background-image: url("../img/bg_shadow.png");
-  background-repeat: repeat-x;
-  padding: 25px 0px 20px;
-  font-family: sans-serif;
-  font-size: 0.8em; }
-  #footer a, #footer a:visited {
-    border-bottom: 1px dotted #333333; }
-  #footer a:hover {
-    border-bottom: 1px solid #333333; }
-  #footer .cell {
-    text-align: right; }
-  #footer .little_kevin {
-    font-size: 0.8em; }
+
+.right {
+  margin-left: 280px;
+  padding-left: 48px; }
+
+.header {
+  margin-top: 28px;
+  margin-bottom: 48px;
+  position: relative; }
+
+h1 {
+  position: absolute;
+  top: 80px;
+  left: 180px;
+
+  font-weight: 400;
+  font-size: 34px; }
+
+
+.bio p {
+  width: 480px;
+  padding-left: 6px;
+  margin-bottom: 44px;
+  line-height: 36px; }
