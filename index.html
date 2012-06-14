@@ -22,7 +22,7 @@
 
     <body>
         <div class="left">
-            <img src="img/tweet.png">
+            <a href="http://twitter.com/clementnodet"><img src="img/tweet.png"></a>
             <p class="tweet">
                 I love philly cheese steak. That hot feeling of cheese and onion, I just can't get enough!
             </p>
@@ -49,5 +49,47 @@
         </div>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        <script src="/js/stash.min.js"></script>
+        <script>
+            $(function () {
+                function rich(tweet) {
+                    var reLinks = /[A-Za-z]+:\/\/[A-Za-z0-9-_]+\.[A-Za-z0-9-_:%&~\?\/.=]+/g
+                      , makeLink = function (url) { return url.link(url) }
+                      , reHandle = /@[A-Za-z0-9-_]+/g
+                      , makeHandle = function (h) { return h.link('http://twitter.com/'+h.substr(1)) }
+
+                    return tweet.replace(reLinks, makeLink).replace(reHandle, makeHandle)
+                }
+
+                function display(tweets) {
+                    if (tweets.length) {
+                        var $tweet = $('.tweet')
+                          , tweet = tweets.shift()
+                        // Cycle
+                        tweets.push(tweet)
+
+                        $tweet.fadeOut(function () {
+                            $tweet.html(rich(tweet)).fadeIn(function () {
+                                setTimeout(function () { display(tweets) }, 8000)
+                            })
+                        })
+                    }
+                }
+               
+                var lmd = stash.get('lmd')
+
+                if (lmd && ((+ new Date) - lmd) < 86400000) { // 1 day
+                    display(stash.get('tweets'))
+                }
+                else {
+                    $.getJSON('http://api.twitter.com/1/statuses/user_timeline.json?callback=?', {screen_name: 'clementnodet', trim_user: true, count: 10}, function (data) {
+                        var tweets = $.map(data, function (t) { return t.text })
+                        stash.set('lmd', +new Date)
+                        stash.set('tweets', tweets)
+                        display(tweets)
+                    })
+                }
+            })
+        </script>
     </body>
 </html>
