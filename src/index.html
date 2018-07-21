@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <title>Clément Nodet</title>
-        <link href='http://fonts.googleapis.com/css?family=Lato:300,400,300italic' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Lato:300,400,300italic|Prosto+One' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="css/style.css" />
  	<script type="text/javascript">
 	  var _gaq = _gaq || [];
@@ -22,9 +22,9 @@
 
     <body>
         <div class="left">
-            <a href="http://twitter.com/clementnodet"><img src="img/tweet.png"></a>
-            <p class="tweet">
-                I love philly cheese steak.
+            <div>”</div>
+            <p>
+                Stop acting so small. You are the universe in ecstatic motion.
             </p>
         </div>
         <div class="right">
@@ -35,61 +35,17 @@
 
             <div class="bio">
                 <p>
-                    You can find me on <a href="http://github.com/clement/">github</a>, on <a href="http://flickr.com/photos/clemvietnam/">flickr</a>, on <a href="http://facebook.com/clement.nodet/">facebook</a> and probably a whole lot more should you feel the need to google my name.
+                I am a French software engineer, currently living in San Francisco, and working for Google as the tech lead for <a href="https://cloud.google.com/firestore/">Cloud Firestore</a> queries &amp; APIs. More details on my <a href="https://www.linkedin.com/in/clementnodet/">LinkedIn profile</a>, or my <a href="files/resume.pdf">resume</a>.
                 </p>
 
                 <p>
-                    If you need to get in touch, drop me a line by <a href="mailto:clement.nodet@gmail.com">email</a>, or add me on <a href="skype:clement_nodet">skype</a>.
+                    When not coding, I draw, paint, cook, <a href="https://en.wikipedia.org/wiki/Brazilian_jiu-jitsu">roll</a>, and sometimes post photos on <a href="https://www.instagram.com/clementnodet/">Instagram</a>.
                 </p>
 
                 <p>
-                    These days, I live in Mountain View, California, where I work for Google, as a software engineer. If you’re interested in what I’ve done before, check out my <a href="files/resume.pdf">resume</a>.
+                    To get in touch, drop me a line by <a href="mailto:clement.nodet@gmail.com">email</a>, or add me on <a href="skype:clement_nodet">skype</a>.
                 </p>
             </div>
         </div>
-
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-        <script src="/js/stash.min.js"></script>
-        <script>
-            $(function () {
-                function rich(tweet) {
-                    var reLinks = /[A-Za-z]+:\/\/[A-Za-z0-9-_]+\.[A-Za-z0-9-_:%&~\?\/.=]+/g
-                      , makeLink = function (url) { return url.link(url) }
-                      , reHandle = /@[A-Za-z0-9-_]+/g
-                      , makeHandle = function (h) { return h.link('http://twitter.com/'+h.substr(1)) }
-
-                    return tweet.replace(reLinks, makeLink).replace(reHandle, makeHandle)
-                }
-
-                function display(tweets) {
-                    if (tweets.length) {
-                        var $tweet = $('.tweet')
-                          , tweet = tweets.shift()
-                        // Cycle
-                        tweets.push(tweet)
-
-                        $tweet.fadeOut(function () {
-                            $tweet.html(rich(tweet)).fadeIn(function () {
-                                setTimeout(function () { display(tweets) }, 8000)
-                            })
-                        })
-                    }
-                }
-               
-                var lmd = stash.get('lmd')
-
-                if (lmd && ((+ new Date) - lmd) < 86400000) { // 1 day
-                    display(stash.get('tweets'))
-                }
-                else {
-                    $.getJSON('http://api.twitter.com/1/statuses/user_timeline.json?callback=?', {screen_name: 'clementnodet', trim_user: true, count: 10}, function (data) {
-                        var tweets = $.map(data, function (t) { return t.text })
-                        stash.set('lmd', +new Date)
-                        stash.set('tweets', tweets)
-                        display(tweets)
-                    })
-                }
-            })
-        </script>
     </body>
 </html>
